@@ -3,16 +3,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_notes_frontend/main.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Notes list screen renders with empty state', (WidgetTester tester) async {
+    await tester.pumpWidget(const NotesApp());
 
-    expect(find.text('mobile_notes_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
-
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.text('mobile_notes_frontend'), findsOneWidget);
+    // Initially shows app bar title "My Notes" and empty state if no notes exist.
+    expect(find.text('My Notes'), findsOneWidget);
+    // Let any async init settle
+    await tester.pumpAndSettle();
+    expect(find.text('No notes yet'), findsOneWidget);
+    expect(find.byIcon(Icons.add), findsOneWidget);
   });
 }

@@ -1,16 +1,25 @@
-# mobile_notes_frontend
+# Simple Notes (Flutter)
 
-A new Flutter project.
+A simple notes application with local persistence:
+- SQLite on mobile/desktop with `sqflite`
+- Web support using `sqflite_common_ffi_web` (IndexedDB backend)
 
-## Getting Started
+Features:
+- List notes with empty state
+- Create, edit, and delete notes
+- Swipe-to-delete on list
+- Light theme per style guide (primary #3b82f6, success #06b6d4, text #111827, background #f9fafb, surface #ffffff)
 
-This project is a starting point for a Flutter application.
+## Run
 
-A few resources to get you started if this is your first Flutter project:
+- Mobile/desktop
+  - flutter pub get
+  - flutter run
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Web (port 3000 preview)
+  - flutter pub get
+  - flutter run -d web-server --web-port 3000 --web-hostname 0.0.0.0
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Notes:
+- No external services or env vars required.
+- Data persists locally (device file/IndexedDB). Clearing browser storage resets notes.
